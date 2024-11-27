@@ -4,11 +4,11 @@ from tkinter import *
 
 
 def send_email():
-    sender_email = "kamlaana@yandex.ru"
-    recipient_mail = "laa_na@mail.ru"
-    password = "lvchlndubmrvxfht"
-    subject = "Проверка связи"
-    body = "Привет! Это проверка связи из программы"
+    sender_email = sender_email_entry.get()
+    recipient_mail = recepient_email_entry.get()
+    password = password_entry.get()
+    subject = subject_entry.get()
+    body = body_text_entry.get(1.0, END)
 
     msg = EmailMessage()
     msg.set_content(body)
@@ -16,7 +16,7 @@ def send_email():
     msg["From"] = sender_email
     msg["To"] = recipient_mail
 
-    sever = None
+    server = None
 
     try:
         server = smtplib.SMTP_SSL("smtp.yandex.ru", 465)
@@ -28,6 +28,7 @@ def send_email():
     finally:
         if server:
             server.quit()
+
 
 window = Tk()
 window.title("Отправка E-mail")
