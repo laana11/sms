@@ -5,7 +5,7 @@ from tkinter import *
 
 def send_email():
     sender_email = sender_email_entry.get()
-    recipient_mail = recepient_email_entry.get()
+    recipient_mail = recipient_email_entry.get()
     password = password_entry.get()
     subject = subject_entry.get()
     body = body_text_entry.get(1.0, END)
@@ -24,7 +24,7 @@ def send_email():
         server.send_message(msg)
         result_label.config(text="Письмо отправлено")
     except Exception as e:
-        result_label.config(f"Произошла ошибка: {e}")
+        result_label.config(text=f"Произошла ошибка: {e}")
     finally:
         if server:
             server.quit()
@@ -38,13 +38,13 @@ Label(text="Отправитель:").grid(row=0, column=0, sticky=W)
 sender_email_entry = Entry()
 sender_email_entry.grid(row=0, column=1, sticky=W)
 
-Label(text="Получатель:").grid(row=1, column=0, sticky=W)
+Label(text="Пароль приложения:").grid(row=1, column=0, sticky=W)
 password_entry = Entry()
 password_entry.grid(row=1, column=1, sticky=W)
 
-Label(text="Пароль приложения:").grid(row=2, column=0, sticky=W)
-recepient_email_entry = Entry()
-recepient_email_entry.grid(row=2, column=1, sticky=W)
+Label(text="Получатель:").grid(row=2, column=0, sticky=W)
+recipient_email_entry = Entry()
+recipient_email_entry.grid(row=2, column=1, sticky=W)
 
 Label(text="Тема письма:").grid(row=3, column=0, sticky=W)
 subject_entry = Entry()
